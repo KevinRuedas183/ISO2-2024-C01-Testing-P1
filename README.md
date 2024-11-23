@@ -2,4 +2,13 @@
 
 Repositorio usado para el testing del Problema 1 de ISO-II.  
 
-Integrantes:  
+ALUMNOS:  
+Raúl Santiago Roldán  
+Samuel Rodero Ballesteros  
+Alejandro Rodríguez Santos  
+Alejandro Róspide Álvarez  
+Kevin Ruedas Villanueva  
+Jaime Sesmero Verbo  
+
+GRUPO:  
+Lab_C1
