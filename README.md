@@ -12,3 +12,6 @@ Jaime Sesmero Verbo
 
 ## GRUPO:  
 Lab_C1
+
+## REPOSITORIO PRINCIPAL DEL PROYECTO:
+[REPOSITORIO PRINCIPAL](https://github.com/KevinRuedas183/ISO24-ISO2-C01-PROBLEMA1.git](https://github.com/KevinRuedas183/ISO24-ISO2-C01.git)
