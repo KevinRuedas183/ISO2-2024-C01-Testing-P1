@@ -2,7 +2,7 @@
 
 Repositorio usado para el testing del Problema 1 de ISO-II.  
 
-ALUMNOS:  
+## ALUMNOS:  
 Raúl Santiago Roldán  
 Samuel Rodero Ballesteros  
 Alejandro Rodríguez Santos  
@@ -10,5 +10,5 @@ Alejandro Róspide Álvarez
 Kevin Ruedas Villanueva  
 Jaime Sesmero Verbo  
 
-GRUPO:  
+## GRUPO:  
 Lab_C1
