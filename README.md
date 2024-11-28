@@ -3,12 +3,9 @@
 Repositorio usado para el testing del Problema 1 de ISO-II.  
 
 ## ALUMNOS:  
-Raúl Santiago Roldán  
-Samuel Rodero Ballesteros  
-Alejandro Rodríguez Santos  
-Alejandro Róspide Álvarez  
-Kevin Ruedas Villanueva  
-Jaime Sesmero Verbo  
+A.RODRIGUEZ-JAIME: hacer programa  
+KEVIN-RAUL: generar pruebas  
+A.ROSPIDE-SAMUEL: implementar pruebas  
 
 ## GRUPO:  
 Lab_C1
