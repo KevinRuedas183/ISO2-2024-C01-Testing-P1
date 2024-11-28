@@ -5,6 +5,11 @@ import java.time.LocalDate;
 public class Matricula {
     private String dniPersona;
     private LocalDate fecha;
+    private enum _titulacion{
+    	Grado,
+    	Master,
+    	Doctorado
+    };
 
     // Constructor
     public Matricula(String dniPersona, LocalDate fecha) {
