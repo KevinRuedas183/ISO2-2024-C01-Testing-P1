@@ -1,3 +1,4 @@
+package java.es.UCLM.esi.ISO2.C01.ejercicio01;
 
 import java.time.LocalDate;
 public class Persona {
@@ -6,7 +7,10 @@ public class Persona {
 	private LocalDate _fecha_nacimiento;
 	private Pais _nacionalidad;
 	private Matricula _matricula;
-	private enum _certificacion;
+	private enum _certificacion{
+		
+		
+	}
 	private int _numero_tlf;
 	private String _correo_electronico;
 
@@ -20,7 +24,7 @@ public class Persona {
 	}
 
 	public void HacerMatricula() {
-		matricula.get
+
 		throw new UnsupportedOperationException();
 	}
 }
