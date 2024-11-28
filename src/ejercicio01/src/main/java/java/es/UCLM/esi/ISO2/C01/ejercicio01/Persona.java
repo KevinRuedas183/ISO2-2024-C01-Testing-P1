@@ -19,19 +19,19 @@ public class Persona implements IVariables {
 	/*
 	 * pongo nivel como tipo titulacion en lugar de como int
 	 */
-	private final TITULACION nivel;
+	private TITULACION nivel;
 	private int _numero_tlf;
 	private String _correo_electronico;
 
 	
 	public Persona(String _nombre, String _apellidos, LocalDate _fecha_nacimiento, Pais _nacionalidad,
-			Matricula _matricula, TITULACION nivel, int _numero_tlf, String _correo_electronico) {
+			Matricula _matricula, String titulacion, int _numero_tlf, String _correo_electronico) {
 		this._nombre = _nombre;
 		this._apellidos = _apellidos;
 		this._fecha_nacimiento = _fecha_nacimiento;
 		this._nacionalidad = _nacionalidad;
 		this._matricula = _matricula;
-		this.nivel = setnivel(nivel);
+		this.nivel = setnivel(titulacion); // metodo controlado errores
 		this._numero_tlf = _numero_tlf;
 		this._correo_electronico = _correo_electronico;
 	}
@@ -127,8 +127,14 @@ public class Persona implements IVariables {
 
 		return nivel;
 	}
-	public TITULACION setnivel (TITULACION nivel) {
-		
+	public TITULACION setnivel (String titulacion) {
+		titulacion = titulacion.toUpperCase();
+		try {
+			nivel = TITULACION.valueOf(titulacion);
+		   } catch (IllegalArgumentException e) {
+               throw new IllegalArgumentException("Nivel de titulación inválido. Debe ser LICENCIATURA, MASTER o DOCTORADO.");
+               // aqui deberia ir algo que llamase de nuevo a introducir datos de titulacion, pero roleamos
+           }
 		return nivel;
 	}
 	
