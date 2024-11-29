@@ -2,15 +2,18 @@ package java.es.UCLM.esi.ISO2.C01.ejercicio01;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Persona implements IVariables {
 
 	private String _nombre;
 	private String _apellidos;
 	private LocalDate _fecha_nacimiento;
-	private Pais _nacionalidad;
-	private Matricula _matricula;
-
+	private String _nacionalidad;
+	private TITULACION nivel;
+	private int _numero_tlf;
+	private String _correo_electronico;
+	private Pais p= new Pais();
 	private enum _certificacion {
 	}
 
@@ -19,9 +22,7 @@ public class Persona implements IVariables {
 	/*
 	 * pongo nivel como tipo titulacion en lugar de como int
 	 */
-	private TITULACION nivel;
-	private int _numero_tlf;
-	private String _correo_electronico;
+
 
 	
 	public Persona(String _nombre, String _apellidos, LocalDate _fecha_nacimiento, Pais _nacionalidad,
@@ -36,12 +37,31 @@ public class Persona implements IVariables {
 		this._correo_electronico = _correo_electronico;
 	}
 
-	public void esEuropeo() {
-		throw new UnsupportedOperationException();
+	
+	//Calcula si es europeo
+	public boolean esEuropeo() {
+		boolean esEuropeo=false;
+		if(p.getPaisesEuropeos().contains(_nacionalidad)) {
+			esEuropeo=true;
+		}
+		
+		return esEuropeo;
 	}
 
-	public void esMayordeEdad() {
-		throw new UnsupportedOperationException();
+	//Calcula si es mayor de edad
+	public boolean esMayordeEdad() {
+		int edad=Period.between(_fecha_nacimiento, LocalDate.now()).getYears();
+		boolean esMayor=false;
+		if(edad>=18) {
+			esMayor=true;
+		}	
+		return esMayor;
+	}
+	
+	public void compruebaString(String e) throws Exception {
+		if(e.isEmpty()) {
+			throw new Exception("El String no puede estar vacío o ser nulo.");
+		}
 	}
 
 	
