@@ -44,21 +44,7 @@ public class Persona implements IVariables {
 		throw new UnsupportedOperationException();
 	}
 
-	/*public void HacerMatricula() throws Exception {
-		try {
-			if (nivel >= TITULACION.MASTER.ordinal() + 1) {
-				_matricula = new Matricula(_apellidos, _fecha_nacimiento);
-				// System.out.println("Matrícula realizada con éxito.");
-				return;
-			}
-			System.out.println("No se alcanza la titulacion requerida");
-		}
-
-		catch (Exception e) {
-			System.out.println("Ha ocurrido un problema:\n" + e);
-		}
-
-	}*/
+	
 
 	public String get_nombre() {
 		return _nombre;
@@ -102,7 +88,8 @@ public class Persona implements IVariables {
 	public Matricula get_matricula() {
 		return _matricula;
 	}
-
+	
+	// no hace falta excepcion, aqui el dato llega bien y MASTER ES predifinido
 	public boolean hacer_matricula() {
 		if (this.nivel.get_nivel_titulacion() >= TITULACION.MASTER.get_nivel_titulacion()) {
 			return true;
