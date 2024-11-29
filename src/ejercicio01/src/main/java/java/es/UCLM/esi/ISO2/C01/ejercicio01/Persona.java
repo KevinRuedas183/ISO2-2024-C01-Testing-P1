@@ -9,7 +9,7 @@ public class Persona implements IVariables {
 	private String _nombre;
 	private String _apellidos;
 	private LocalDate _fecha_nacimiento;
-	private String _nacionalidad;
+	private Pais _nacionalidad;
 	private TITULACION nivel;
 	private int _numero_tlf;
 	private String _correo_electronico;
@@ -31,7 +31,6 @@ public class Persona implements IVariables {
 		this._apellidos = _apellidos;
 		this._fecha_nacimiento = _fecha_nacimiento;
 		this._nacionalidad = _nacionalidad;
-		this._matricula = _matricula;
 		this.nivel = setnivel(titulacion); // metodo controlado errores
 		this._numero_tlf = _numero_tlf;
 		this._correo_electronico = _correo_electronico;
@@ -105,10 +104,6 @@ public class Persona implements IVariables {
 		this._nacionalidad = _nacionalidad;
 	}
 
-	public Matricula get_matricula() {
-		return _matricula;
-	}
-	
 	// no hace falta excepcion, aqui el dato llega bien y MASTER ES predifinido
 	public boolean hacer_matricula() {
 		if (this.nivel.get_nivel_titulacion() >= TITULACION.MASTER.get_nivel_titulacion()) {
