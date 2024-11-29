@@ -3,7 +3,7 @@ package java.es.UCLM.esi.ISO2.C01.ejercicio01;
 import java.util.ArrayList;
 
 public class Pais {
-	ArrayList<String> paisesEuropeos = new ArrayList<>();
+	ArrayList<String> paisesEuropeos = new ArrayList<String>();
 	
 	public Pais() {
         paisesEuropeos.add("ESPAÑA");
