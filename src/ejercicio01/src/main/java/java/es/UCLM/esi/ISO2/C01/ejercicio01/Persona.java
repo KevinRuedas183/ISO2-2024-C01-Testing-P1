@@ -27,7 +27,7 @@ public class Persona implements IVariables {
 	
 	public Persona(String _nombre, String _apellidos, LocalDate _fecha_nacimiento, Pais _nacionalidad,
 			Matricula _matricula, String titulacion, int _numero_tlf, String _correo_electronico) {
-		this._nombre = _nombre;
+		this._nombre = set_nombre(_nombre);
 		this._apellidos = _apellidos;
 		this._fecha_nacimiento = _fecha_nacimiento;
 		this._nacionalidad = _nacionalidad;
@@ -57,10 +57,12 @@ public class Persona implements IVariables {
 		return esMayor;
 	}
 	
-	public void compruebaString(String e) throws Exception {
+	public boolean compruebaString(String e) throws Exception {
 		if(e.isEmpty()) {
 			throw new Exception("El String no puede estar vacío o ser nulo.");
+			return false;
 		}
+		return true;
 	}
 
 	
@@ -69,8 +71,11 @@ public class Persona implements IVariables {
 		return _nombre;
 	}
 
-	public void set_nombre(String _nombre) {
-		try {
+	public String set_nombre(String _nombre) {
+		if (compruebaString(_nombre) == true) {
+			this._nombre = _nombre;
+		}
+			compruebaString(_nombre);
 			
 			
 			this._nombre = _nombre;
