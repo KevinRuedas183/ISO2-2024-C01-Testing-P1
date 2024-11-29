@@ -5,8 +5,14 @@ public interface IVariables {
 	public enum TITULACION {
 		LICENCIATURA(1), MASTER(2), DOCTORADO(3);
 
-		TITULACION(int i) {
-			// TODO Auto-generated constructor stub
+		private int nivel;
+
+		TITULACION(int nivel) {
+			this.nivel = nivel;
+		}
+
+		public int get_nivel_titulacion() {
+			return nivel;
 		}
 
 	}

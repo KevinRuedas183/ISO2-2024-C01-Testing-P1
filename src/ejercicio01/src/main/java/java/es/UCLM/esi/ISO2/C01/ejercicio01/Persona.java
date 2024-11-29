@@ -103,8 +103,11 @@ public class Persona implements IVariables {
 		return _matricula;
 	}
 
-	public void set_matricula(Matricula _matricula) {
-		this._matricula = _matricula;
+	public boolean hacer_matricula() {
+		if (this.nivel.get_nivel_titulacion() >= TITULACION.MASTER.get_nivel_titulacion()) {
+			return true;
+		}
+		return false;
 	}
 
 	public int get_numero_tlf() {
