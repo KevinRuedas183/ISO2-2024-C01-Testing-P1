@@ -1,6 +1,7 @@
 package java.es.UCLM.esi.ISO2.C01.ejercicio01;
 
 import java.io.IOException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -9,13 +10,12 @@ public class Persona implements IVariables {
 	private String _nombre;
 	private String _apellidos;
 	private LocalDate _fecha_nacimiento;
-	private Pais _nacionalidad;
+	private String _nacionalidad;
 	private TITULACION nivel;
 	private int _numero_tlf;
 	private String _correo_electronico;
 	private Pais p= new Pais();
-	private enum _certificacion {
-	}
+
 
 	// para luego comprobar nivel de titulacion. igual al final no es necesario
 	
@@ -25,17 +25,86 @@ public class Persona implements IVariables {
 
 
 	
-	public Persona(String _nombre, String _apellidos, LocalDate _fecha_nacimiento, Pais _nacionalidad,
-			Matricula _matricula, String titulacion, int _numero_tlf, String _correo_electronico) {
-		this._nombre = set_nombre(_nombre);
-		this._apellidos = _apellidos;
-		this._fecha_nacimiento = _fecha_nacimiento;
-		this._nacionalidad = _nacionalidad;
+	public Persona(String _nombre, String _apellidos, LocalDate _fecha_nacimiento, String _nacionalidad,
+			 String titulacion, int _numero_tlf, String _correo_electronico) throws Exception {
+		set_nombre(_nombre);
+		set_apellidos(_apellidos);
+		set_nacionalidad(_nacionalidad);
+		set_correo_electronico(_correo_electronico);
 		this.nivel = setnivel(titulacion); // metodo controlado errores
-		this._numero_tlf = _numero_tlf;
-		this._correo_electronico = _correo_electronico;
+		set_numero_tlf(_numero_tlf);
+		set_fecha_nacimiento(_fecha_nacimiento);
 	}
 
+	
+	
+	public String get_nombre() {
+		return _nombre;
+	}
+
+	public void set_nombre(String _nombre) throws Exception {
+		compruebaString(_nombre);
+		this._nombre=_nombre;
+		
+	}
+	
+	public String get_apellidos() {
+		return _apellidos;
+	}
+
+	public void set_apellidos(String _apellidos) throws Exception {
+		compruebaString(_apellidos);
+		this._apellidos = _apellidos;
+	}
+
+	public LocalDate get_fecha_nacimiento() {
+		return _fecha_nacimiento;
+	}
+
+	public void set_fecha_nacimiento(LocalDate _fecha_nacimiento)throws Exception{
+		
+		
+		if(Period.between(_fecha_nacimiento, LocalDate.now()).getYears()<0 || Period.between(_fecha_nacimiento, LocalDate.now()).getYears()>200) {
+			throw new Exception("Debe escribir una fecha correcta.");
+		}
+		try{
+			this._fecha_nacimiento = _fecha_nacimiento;
+		}catch(DateTimeException e) {
+            System.out.println("Error: Día, mes o año inválido.");
+        }
+	}
+
+	public String get_nacionalidad() {
+		return _nacionalidad;
+	}
+
+	public void set_nacionalidad(String _nacionalidad) throws Exception {
+		compruebaString(_nacionalidad);
+		this._nacionalidad = _nacionalidad.toUpperCase();	
+	}
+	
+	public int get_numero_tlf() {
+		return _numero_tlf;
+	}
+
+	public void set_numero_tlf(int _numero_tlf) throws Exception {
+		if(_numero_tlf<0) {
+			throw new Exception("No existen los numeros de tlf negativos.");
+		}else if (String.valueOf(_numero_tlf).length()!=9) {
+			throw new Exception("El número debe contener un total de 9 números");
+		}else {
+			this._numero_tlf = _numero_tlf;	
+		}
+	}
+
+	public String get_correo_electronico() {
+		return _correo_electronico;
+	}
+
+	public void set_correo_electronico(String _correo_electronico) throws Exception {
+		compruebaString( _correo_electronico);
+		this._correo_electronico = _correo_electronico;
+	}
 	
 	//Calcula si es europeo
 	public boolean esEuropeo() {
@@ -61,45 +130,7 @@ public class Persona implements IVariables {
 		if(e.isEmpty()) {
 			throw new Exception("El String no puede estar vacío o ser nulo.");
 		}
-	}
 
-	
-
-	public String get_nombre() {
-		return _nombre;
-	}
-
-	public String set_nombre(String _nombre) {
-		compruebaString(_nombre);
-		this._nombre = _nombre;
-	
-			this._nombre = _nombre;
-		} catch (Exception e) {
-
-		}
-
-	public String get_apellidos() {
-		return _apellidos;
-	}
-
-	public void set_apellidos(String _apellidos) {
-		this._apellidos = _apellidos;
-	}
-
-	public LocalDate get_fecha_nacimiento() {
-		return _fecha_nacimiento;
-	}
-
-	public void set_fecha_nacimiento(LocalDate _fecha_nacimiento) {
-		this._fecha_nacimiento = _fecha_nacimiento;
-	}
-
-	public Pais get_nacionalidad() {
-		return _nacionalidad;
-	}
-
-	public void set_nacionalidad(Pais _nacionalidad) {
-		this._nacionalidad = _nacionalidad;
 	}
 
 	// no hace falta excepcion, aqui el dato llega bien y MASTER ES predifinido
@@ -108,22 +139,6 @@ public class Persona implements IVariables {
 			return true;
 		}
 		return false;
-	}
-
-	public int get_numero_tlf() {
-		return _numero_tlf;
-	}
-
-	public void set_numero_tlf(int _numero_tlf) {
-		this._numero_tlf = _numero_tlf;
-	}
-
-	public String get_correo_electronico() {
-		return _correo_electronico;
-	}
-
-	public void set_correo_electronico(String _correo_electronico) {
-		this._correo_electronico = _correo_electronico;
 	}
 
 	public TITULACION getNivel() {
