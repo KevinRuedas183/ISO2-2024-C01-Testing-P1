@@ -57,12 +57,10 @@ public class Persona implements IVariables {
 		return esMayor;
 	}
 	
-	public boolean compruebaString(String e) throws Exception {
+	public void compruebaString(String e) throws Exception {
 		if(e.isEmpty()) {
 			throw new Exception("El String no puede estar vacío o ser nulo.");
-			return false;
 		}
-		return true;
 	}
 
 	
@@ -72,18 +70,13 @@ public class Persona implements IVariables {
 	}
 
 	public String set_nombre(String _nombre) {
-		if (compruebaString(_nombre) == true) {
-			this._nombre = _nombre;
-		}
-			compruebaString(_nombre);
-			
-			
+		compruebaString(_nombre);
+		this._nombre = _nombre;
+	
 			this._nombre = _nombre;
 		} catch (Exception e) {
 
 		}
-
-	}
 
 	public String get_apellidos() {
 		return _apellidos;
