@@ -1,4 +1,4 @@
-package java.es.UCLM.esi.ISO2.C01.ejercicio01;
+package es.UCLM.esi.ISO2.C01.ejercicio01;
 
 import java.io.IOException;
 import java.time.DateTimeException;
@@ -127,11 +127,15 @@ public class Persona implements IVariables {
 	}
 	
 	public void compruebaString(String e) throws Exception {
-		if(e.isEmpty()) {
-			throw new Exception("El String no puede estar vacío o ser nulo.");
-		}
+	    if (e == null || e.isEmpty()) {
+	        throw new Exception("El String no puede estar vacío o ser nulo.");
+	    }
 
+	    if (e.contains("\n")) {
+	        throw new Exception("El String no puede contener saltos de línea.");
+	    }
 	}
+
 
 	// no hace falta excepcion, aqui el dato llega bien y MASTER ES predifinido
 	public boolean hacer_matricula() {
