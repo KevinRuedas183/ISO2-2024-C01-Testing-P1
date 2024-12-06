@@ -31,7 +31,7 @@ public class Persona implements IVariables {
 		set_apellidos(_apellidos);
 		set_nacionalidad(_nacionalidad);
 		set_correo_electronico(_correo_electronico);
-		this.nivel = setnivel(titulacion); // metodo controlado errores
+		setnivel(titulacion); // metodo controlado errores
 		set_numero_tlf(_numero_tlf);
 		set_fecha_nacimiento(_fecha_nacimiento);
 	}
@@ -70,7 +70,7 @@ public class Persona implements IVariables {
 		try{
 			this._fecha_nacimiento = _fecha_nacimiento;
 		}catch(DateTimeException e) {
-            System.out.println("Error: Día, mes o año inválido.");
+           throw new Exception("Error: Día, mes o año inválido.");
         }
 	}
 
