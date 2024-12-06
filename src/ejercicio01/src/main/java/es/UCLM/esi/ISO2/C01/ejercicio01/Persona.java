@@ -149,15 +149,14 @@ public class Persona implements IVariables {
 
 		return nivel;
 	}
-	public TITULACION setnivel (String titulacion) {
+	public void setnivel (String titulacion) {
 		titulacion = titulacion.toUpperCase();
 		try {
 			nivel = TITULACION.valueOf(titulacion);
 		   } catch (IllegalArgumentException e) {
-               throw new IllegalArgumentException("Nivel de titulación inválido. Debe ser LICENCIATURA, MASTER o DOCTORADO.");
+               		throw new IllegalArgumentException("Nivel de titulación inválido. Debe ser LICENCIATURA, MASTER o DOCTORADO.");
                // aqui deberia ir algo que llamase de nuevo a introducir datos de titulacion, pero roleamos
-           }
-		return nivel;
+           }		
 	}
 	
 }
