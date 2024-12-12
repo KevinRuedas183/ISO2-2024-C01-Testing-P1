@@ -136,6 +136,15 @@ public class Persona implements IVariables {
 	    }
 	}
 
+	public boolean esMayoryEuropeo(){
+		boolen resultado=false;
+		if(esEuropeo() && esMayordeEdad()){
+			resultado=true;	
+		}
+
+	return resultado;
+	
+	}
 
 	// no hace falta excepcion, aqui el dato llega bien y MASTER ES predifinido
 	public boolean hacer_matricula() {
