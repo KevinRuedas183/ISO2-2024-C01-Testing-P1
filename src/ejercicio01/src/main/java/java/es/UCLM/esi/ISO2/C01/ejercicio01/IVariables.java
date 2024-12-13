@@ -1,4 +1,4 @@
-package java.es.UCLM.esi.ISO2.C01.ejercicio01;
+package es.UCLM.esi.ISO2.C01.ejercicio01;
 import java.util.ArrayList;
 
 public interface IVariables {
