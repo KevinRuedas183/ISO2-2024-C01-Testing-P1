@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ejercicio01</a> &gt; <a href="index.source.html" class="el_package">es.UCLM.esi.ISO2.C01.ejercicio01</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package es.UCLM.esi.ISO2.C01.ejercicio01;
+import java.time.LocalDate;
+import java.util.Scanner;
+
+<span class="nc" id="L5">public class Main {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L8">        Scanner TECLADO = new Scanner(System.in);</span>
+
+        try {
+<span class="nc" id="L11">            String nombre = solicitarEntradaTexto(TECLADO, &quot;Introduzca su nombre: &quot;);</span>
+<span class="nc" id="L12">            String apellido = solicitarEntradaTexto(TECLADO, &quot;Introduzca su apellido: &quot;);</span>
+<span class="nc" id="L13">            int dia = solicitarEntradaNumero(TECLADO, &quot;Introduzca el día que nació: &quot;);</span>
+<span class="nc" id="L14">            int mes = solicitarEntradaNumero(TECLADO, &quot;Introduzca el mes que nació: &quot;);</span>
+<span class="nc" id="L15">            int anio = solicitarEntradaNumero(TECLADO, &quot;Introduzca el año que nació: &quot;);</span>
+<span class="nc" id="L16">            String pais = solicitarEntradaTexto(TECLADO, &quot;Introduzca su país: &quot;);</span>
+<span class="nc" id="L17">            String titulo = solicitarEntradaTexto(TECLADO, &quot;Introduzca su titulación: &quot;);</span>
+<span class="nc" id="L18">            int num = solicitarEntradaNumero(TECLADO, &quot;Introduzca su número de tlf: &quot;);</span>
+<span class="nc" id="L19">            String correo = solicitarEntradaTexto(TECLADO, &quot;Introduzca su correo electrónico: &quot;);</span>
+
+            // Crear la fecha de nacimiento
+<span class="nc" id="L22">            LocalDate fecha_nac = LocalDate.of(anio, mes, dia);</span>
+
+            // Crear un objeto Persona (asumiendo que tienes esta clase definida)
+<span class="nc" id="L25">            Persona p = new Persona(nombre, apellido, fecha_nac, pais, titulo, num, correo);</span>
+
+<span class="nc" id="L27">            System.out.println(&quot;Persona creada con éxito: &quot; + p);</span>
+
+<span class="nc" id="L29">        } catch (Exception e) {</span>
+<span class="nc" id="L30">            System.out.println(&quot;Error inesperado: &quot; + e.getMessage());</span>
+        } finally {
+<span class="nc" id="L32">            TECLADO.close();</span>
+        }
+<span class="nc" id="L34">    }</span>
+
+    // Método para solicitar y validar entrada de texto
+    private static String solicitarEntradaTexto(Scanner teclado, String mensaje) {
+        while (true) {
+            try {
+<span class="nc" id="L40">                System.out.print(mensaje);</span>
+<span class="nc" id="L41">                String entrada = leerEntrada(teclado);</span>
+<span class="nc" id="L42">                return entrada; // Devuelve el valor si es válido</span>
+<span class="nc" id="L43">            } catch (Exception e) {</span>
+<span class="nc" id="L44">                System.out.println(&quot;Error: &quot; + e.getMessage() + &quot; Intente nuevamente.&quot;);</span>
+<span class="nc" id="L45">            }</span>
+        }
+    }
+
+    // Método para solicitar y validar entrada numérica
+    private static int solicitarEntradaNumero(Scanner teclado, String mensaje) {
+        while (true) {
+            try {
+<span class="nc" id="L53">                System.out.print(mensaje);</span>
+<span class="nc" id="L54">                int numero = leerNumero(teclado);</span>
+<span class="nc" id="L55">                return numero; // Devuelve el valor si es válido</span>
+<span class="nc" id="L56">            } catch (Exception e) {</span>
+<span class="nc" id="L57">                System.out.println(&quot;Error: &quot; + e.getMessage() + &quot; Intente nuevamente.&quot;);</span>
+<span class="nc" id="L58">            }</span>
+        }
+    }
+
+    // Método para leer cadenas de texto y validar saltos de línea o entradas vacías
+    private static String leerEntrada(Scanner teclado) throws Exception {
+<span class="nc" id="L64">        String entrada = teclado.nextLine().trim(); // Captura la línea completa y elimina espacios extra</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (entrada.isEmpty()) { // Si está vacío, el usuario solo presionó Enter</span>
+<span class="nc" id="L66">            throw new Exception(&quot;La entrada no puede estar vacía ni contener solo un salto de línea.&quot;);</span>
+        }
+<span class="nc" id="L68">        return entrada; // Retorna la entrada válida</span>
+    }
+
+    // Método para leer números enteros y validar entradas vacías
+    private static int leerNumero(Scanner teclado) throws Exception {
+<span class="nc" id="L73">        String entrada = teclado.nextLine().trim(); // Captura la entrada como texto para verificar si está vacía</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (entrada.isEmpty()) { // Verifica si el usuario no ingresó nada</span>
+<span class="nc" id="L75">            throw new Exception(&quot;La entrada no puede estar vacía ni contener solo un salto de línea.&quot;);</span>
+        }
+        try {
+<span class="nc" id="L78">            return Integer.parseInt(entrada); // Intenta convertir la entrada a número entero</span>
+<span class="nc" id="L79">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L80">            throw new Exception(&quot;Por favor, ingrese un número entero válido.&quot;);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

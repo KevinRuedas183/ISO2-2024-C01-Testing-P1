@@ -21,7 +21,7 @@ public class PersonaTest {
 	}
 
 	@Test
-	public void testEsEuropeo() {
+	public void testEsEuropeoT() {
 		LocalDate nac = LocalDate.of(2000, 5, 4);
 		try {
 			Persona p = new Persona("Jose", "Jimenez García", nac, "ESPAÑA",
@@ -32,10 +32,36 @@ public class PersonaTest {
 		} catch (Exception e) {
 		}
 	}
+	
+	@Test
+	public void testEsEuropeoF() {
+		LocalDate nac = LocalDate.of(2000, 5, 4);
+		try {
+			Persona p = new Persona("Jose", "Jimenez García", nac, "japón",
+					"LICENCIATURA", 926666677, "jose@gmail.com");
+			boolean expected = false;
+			boolean actual = p.esEuropeo();
+			assertEquals(expected, actual);
+		} catch (Exception e) {
+		}
+	}
 
 	@Test
-	public void testEsMayordeEdad() {
-		LocalDate nac = LocalDate.of(2016, 5, 4);
+	public void testEsMayordeEdadT() {
+		LocalDate nac = LocalDate.of(1984, 5, 4);
+		try {
+			Persona p = new Persona("Jose", "Jimenez García", nac, "ESPAÑA",
+					"LICENCIATURA", 926666677, "jose@gmail.com");
+			boolean expected = true;
+			boolean actual = p.esMayoryEuropeo();
+			assertEquals(expected, actual);
+		} catch (Exception e) {
+		}
+	}
+	
+	@Test
+	public void testEsMayordeEdadF() {
+		LocalDate nac = LocalDate.of(2008, 5, 4);
 		try {
 			Persona p = new Persona("Jose", "Jimenez García", nac, "ESPAÑA",
 					"LICENCIATURA", 926666677, "jose@gmail.com");
@@ -46,11 +72,12 @@ public class PersonaTest {
 		}
 	}
 
+
 	@Test
 	public void testEsMayoryEuropeoF() {
-		LocalDate nac = LocalDate.of(2016, 5, 4);
+		LocalDate nac = LocalDate.of(2009, 5, 4);
 		try {
-			Persona p = new Persona("Jose", "Jimenez García", nac, "NIGERIA",
+			Persona p = new Persona("Jose", "Jimenez García", nac, "CHINA",
 					"LICENCIATURA", 926666677, "jose@gmail.com");
 			boolean expected = false;
 			boolean actual = p.esMayoryEuropeo();
@@ -61,7 +88,7 @@ public class PersonaTest {
 	
 	@Test
 	public void testEsMayoryEuropeoT() {
-		LocalDate nac = LocalDate.of(2000, 5, 4);
+		LocalDate nac = LocalDate.of(1997, 5, 4);
 		try {
 			Persona p = new Persona("Jose", "Jimenez García", nac, "ESPAÑA",
 					"LICENCIATURA", 926666677, "jose@gmail.com");
@@ -77,7 +104,7 @@ public class PersonaTest {
 		LocalDate nac = LocalDate.of(2016, 5, 4);
 		try {
 			Persona p = new Persona("Jose", "Jimenez García", nac, "ESPAÑA",
-					"master", 926666677, "jose@gmail.com");
+					"doctorado", 926666677, "jose@gmail.com");
 			boolean expected = true;
 			boolean actual = p.hacer_matricula();
 			assertEquals(expected, actual);
